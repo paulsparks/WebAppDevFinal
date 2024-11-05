@@ -1,0 +1,27 @@
+{
+  "name": "Final Project",
+  "dockerComposeFile": "docker-compose.yaml",
+  "service": "aspnet",
+  "workspaceFolder": "/workspace",
+  "postAttachCommand": "./appsettings-generator.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-dotnettools.csdevkit",
+        "ms-azuretools.vscode-docker"
+      ],
+      "settings": {
+        "terminal.integrated.profiles.linux": {
+          "bash": {
+            "path": "/bin/bash"
+          }
+        },
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "editor.tabSize": 4
+      }
+    }
+  },
+  "forwardPorts": [
+    "db:5432"
+  ]
+}
