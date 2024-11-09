@@ -1,7 +1,6 @@
 // Paul Sparks
 
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using FinalProject.Data;
 using FinalProject.Models;
 
@@ -9,9 +8,9 @@ namespace FinalProject.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly MovieContext _context;
+    private readonly RecipesContext _context;
 
-    public HomeController(MovieContext context)
+    public HomeController(RecipesContext context)
     {
         _context = context;
     }
@@ -20,41 +19,41 @@ public class HomeController : Controller
     public IActionResult Add()
     {
         ViewBag.Action = "Add";
-        return View("Edit", new Movie());
+        return View("Edit", new Recipe());
     }
 
     [HttpGet]
     public IActionResult Edit(int id)
     {
         ViewBag.Action = "Edit";
-        var movie = _context.Movies.Find(id);
-        return View(movie);
+        var recipe = _context.Recipes.Find(id);
+        return View(recipe);
     }
 
     [HttpPost]
-    public IActionResult Edit(Movie movie)
+    public IActionResult Edit(Recipe recipe)
     {
         if (ModelState.IsValid)
         {
-            if (movie.MovieId == 0)
-                _context.Movies.Add(movie);
+            if (recipe.RecipeId == 0)
+                _context.Recipes.Add(recipe);
             else
-                _context.Movies.Update(movie);
+                _context.Recipes.Update(recipe);
 
             _context.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
         else
         {
-            ViewBag.Action = (movie.MovieId == 0) ? "Add" : "Edit";
-            return View(movie);
+            ViewBag.Action = (recipe.RecipeId == 0) ? "Add" : "Edit";
+            return View(recipe);
         }
     }
 
     [HttpPost]
-    public IActionResult Delete(Movie movie)
+    public IActionResult Delete(Recipe recipe)
     {
-        _context.Movies.Remove(movie);
+        _context.Recipes.Remove(recipe);
         _context.SaveChanges();
         return RedirectToAction("Index", "Home");
     }
@@ -62,15 +61,14 @@ public class HomeController : Controller
     [HttpGet]
     public IActionResult Delete(int id)
     {
-        var movie = _context.Movies.Find(id);
-        return View(movie);
+        var recipe = _context.Recipes.Find(id);
+        return View(recipe);
     }
 
     [HttpGet]
     public IActionResult Index()
     {
-        var movies = _context.Movies.Include(m => m.Genre)
-            .OrderBy(m => m.Name).ToList();
-        return View(movies);
+        var recipes = _context.Recipes.ToList();
+        return View(recipes);
     }
 }

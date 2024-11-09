@@ -20,7 +20,7 @@ namespace FinalProject.Data
     {
       base.OnModelCreating(modelBuilder);
 
-      modelBuilder.Entity<Movie>().HasData(
+      modelBuilder.Entity<Recipe>().HasData(
         new Recipe
         {
           RecipeId = 1,
