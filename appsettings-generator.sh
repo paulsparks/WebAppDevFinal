@@ -8,7 +8,7 @@ echo "{
     }
   },
   \"ConnectionStrings\": {
-    \"MoviesContext\": \"Host=db;Port=5432;Database=postgres;Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD};Trust Server Certificate=true;\"
+    \"RecipesContext\": \"Host=db;Port=5432;Database=postgres;Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD};Trust Server Certificate=true;\"
   },
   \"AllowedHosts\": \"*\"
 }" > ./FinalProject/appsettings.json
