@@ -15,7 +15,7 @@ namespace FinalProject.Data
     public DbSet<Recipe> Recipes { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-      => optionsBuilder.UseNpgsql(_configuration.GetConnectionString("MoviesContext"));
+      => optionsBuilder.UseNpgsql(_configuration.GetConnectionString("RecipesContext"));
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
       base.OnModelCreating(modelBuilder);

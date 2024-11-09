@@ -1,36 +1,37 @@
-﻿@model List<Movie>
+﻿@model List<Recipe>
 @{
     ViewData["Title"] = "Home Page";
 }
 
 <h1>Paul Sparks</h1>
-<h1>Movie List</h1>
+<h1>Recipe List</h1>
 
-<a asp-controller="Movie" asp-action="Add">Add New Movie</a>
+<a asp-controller="Recipe" asp-action="Add">Add New Recipe</a>
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
             <th>Name</th>
-            <th>Year</th>
-            <th>Genre</th>
-            <th>Rating</th>
+            <th>Date</th>
+            <th>Author</th>
+            <th>Description</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var movie in Model)
+        @foreach (var recipe in Model)
         {
             <tr>
-                <td>@movie.Name</td>
-                <td>@movie.Year</td>
-                <td>@movie.Genre.Name</td>
-                <td>@movie.Rating</td>
+                <td>@recipe.Name</td>
+                <td>@recipe.Date</td>
+                <td>@recipe.Author</td>
+                <td>@recipe.Description</td>
                 <td>
-                    <a asp-controller="Movie" asp-action="Edit" asp-route-id="@movie.MovieId" asp-route-slug="@movie.Slug">
+                    <a asp-controller="Recipe" asp-action="Edit" asp-route-id="@recipe.RecipeId"
+                        asp-route-slug="@recipe.Slug">
                         Edit
                     </a>
-                    <a asp-controller="Movie" asp-action="Delete" asp-route-id="@movie.MovieId"
-                        asp-route-slug="@movie.Slug">
+                    <a asp-controller="Recipe" asp-action="Delete" asp-route-id="@recipe.RecipeId"
+                        asp-route-slug="@recipe.Slug">
                         Delete
                     </a>
                 </td>
