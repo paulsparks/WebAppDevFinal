@@ -6,20 +6,13 @@ using FinalProject.Models;
 
 namespace FinalProject.Controllers;
 
-public class HomeController : Controller
+public class AddRecipesController : Controller
 {
     private readonly RecipesContext _context;
 
-    public HomeController(RecipesContext context)
+    public AddRecipesController(RecipesContext context)
     {
         _context = context;
-    }
-
-    [HttpGet]
-    public IActionResult Recipe(int id)
-    {
-        var recipe = _context.Recipes.Find(id);
-        return View("Recipe", recipe);
     }
 
     [HttpGet]

@@ -9,6 +9,7 @@ namespace FinalProject.Models
     public string? Description { get; set; }
     public DateOnly? Date { get; set; }
     public string? Author { get; set; }
+    public string? ImagePath { get; set; }
 
     public string Slug =>
       Name?.Replace(" ", "-").ToLower() + "-" +

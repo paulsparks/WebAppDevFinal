@@ -1,0 +1,19 @@
+@model Recipe
+
+<div class="container">
+    <div class="row">
+        <h1>@Model.Name</h1>
+        <h2 style="font-size: large">@Model.Author, @Model.Date</h2>
+    </div>
+    <div class="row">
+        <div class="col-6 col-lg-4">
+            <img class="img-fluid" src="@Model.ImagePath">
+        </div>
+        <div class="col">
+            <p>@Model.Description</p>
+            <a asp-controller="Home" asp-action="Index" class="btn btn-primary">
+                Back
+            </a>
+        </div>
+    </div>
+</div>

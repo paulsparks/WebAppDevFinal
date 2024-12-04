@@ -1,41 +1,39 @@
 ﻿@model List<Recipe>
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<h1>Paul Sparks</h1>
-<h1>Recipe List</h1>
+<h1>Recipes</h1>
 
-<a asp-controller="Recipe" asp-action="Add">Add New Recipe</a>
-<table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Date</th>
-            <th>Author</th>
-            <th>Description</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var recipe in Model)
+<div class="container">
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        if (i % 3 == 0)
         {
-            <tr>
-                <td>@recipe.Name</td>
-                <td>@recipe.Date</td>
-                <td>@recipe.Author</td>
-                <td>@recipe.Description</td>
-                <td>
-                    <a asp-controller="Recipe" asp-action="Edit" asp-route-id="@recipe.RecipeId"
-                        asp-route-slug="@recipe.Slug">
-                        Edit
-                    </a>
-                    <a asp-controller="Recipe" asp-action="Delete" asp-route-id="@recipe.RecipeId"
-                        asp-route-slug="@recipe.Slug">
-                        Delete
-                    </a>
-                </td>
-            </tr>
+            if (i != 0)
+            {
+                @:</div>
+            }
+            @:<div class="row">
         }
-    </tbody>
-</table>
+        
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                @if (Model[i].ImagePath != null) {
+                    <img src="@Model[i].ImagePath" class="card-img-top">
+                }
+                <div class="card-body">
+                    <h5 class="card-title">@Model[i].Name</h5>
+                    <p style="color: grey;" class="card-text text-truncate">@Model[i].Description</p>
+                    <a asp-controller="Home" asp-action="Recipe" asp-route-id="@Model[i].RecipeId"
+                        asp-route-slug="@Model[i].Slug" class="btn btn-primary">See Recipe</a>
+                </div>
+            </div>
+        </div>
+
+        @if (i == Model.Count - 1)
+        {
+            @:</div>
+        }
+    }
+</div>
