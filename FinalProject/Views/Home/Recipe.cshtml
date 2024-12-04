@@ -1,5 +1,7 @@
 @model Recipe
-
+@{
+    ViewData["Title"] = Model.Name;
+}
 <div class="container">
     <div class="row">
         <h1>@Model.Name</h1>
