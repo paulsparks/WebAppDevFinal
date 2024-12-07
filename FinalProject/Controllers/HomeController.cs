@@ -2,7 +2,6 @@
 
 using Microsoft.AspNetCore.Mvc;
 using FinalProject.Data;
-using FinalProject.Models;
 
 namespace FinalProject.Controllers;
 
